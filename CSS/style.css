@@ -8,6 +8,9 @@
   --cor-02: #9b9797;
   --cor-03: #232323;
   --cor-04: #b3b3b3;
+  --cor-05: #2323235c;
+/*          X  Y  desfoque  espessura      cor*/
+  --sombra: 0 0  0.5rem       0.1rem   var(--cor-03);
 }
 
 /* Reset */
@@ -38,7 +41,7 @@ nav {
   width: 100%;
   background-color: var(--cor-03);
   color: var(--cor-01);
-  /* padding: 1.2rem 5rem; */
+ 
 
   display: flex;
   flex-direction: row;
@@ -60,6 +63,10 @@ nav ul {
   display: flex;
 }
 
+nav i{
+  font-size: 3rem;
+}
+
 .menu a {
   font-weight: 700;
   letter-spacing: 0.1rem;
@@ -74,8 +81,10 @@ nav ul {
 .menu-responsivo {
   font-size: 3rem;
   display: none;
+  position: relative;
 }
 
+/* ===== Bloco da Notícia ===== */
 article {
   background-color: var(--cor-01);
   height: 16rem;
@@ -98,7 +107,7 @@ article:hover {
   cursor: pointer;
   transform: scale(1.01);
   /*          X   Y   desfoque    espessura   cor */
-  box-shadow: 0   0   0.5rem      0.1rem      var(--cor-03);
+  box-shadow: var(--sombra);
 }
 
 .foto {
@@ -123,15 +132,61 @@ article:hover {
   justify-content: space-between;
 }
 
+/* ===== Footer ===== */
 footer {
-  background-color: var(--cor-03);
-  opacity: 0.6;
+  background-color: var(--cor-05);
   color: var(--cor-01);
   padding: 1rem 5rem;
   text-align: center;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+/* )====== Menu Responsivo (Dropdown) ====== */
+/* .menu-responsivo input { */
+.menu-responsivo input[type="checkbox"] {
+  display: none;
+}
+
+.menu-button{
+  cursor: pointer;
+}
+
+.menu-content{
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--cor-01);
+  min-width: 10rem;
+  box-shadow: var(--sombra);
+  z-index: 10;
+  text-align: right;
+}
+
+.menu-content ul{
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-content a{
+  color: var(--cor-03);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem;
+  display: block;
+}
+
+.menu-content a:hover{
+  background-color: var(--cor-principal);
+  color: var(--cor-01);
+}
+
+/* checkbox ativando dropdown */
+#menu-toggle:checked + .menu-button + .menu-content{
+  display: block;
 }
 
 /* ===== Media Queries ===== */
@@ -165,6 +220,7 @@ footer {
   .foto img {
       width: 100%;
   }
+
 }
 
 /* SM Small - smartphone landscape (paisagem) */
@@ -246,3 +302,5 @@ footer {
       max-width: 75rem; /* 1200px */
   }
 }
+
+
